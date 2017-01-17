@@ -211,14 +211,14 @@ $.ajax({
 
 ------
 ### 常用工具模块(通过打包脚本合并到personal)
-- [personal.util](./util.md)
-- [personal.busi](./busi.md)
+- personal.util
+- personal.busi
 
 -----------
 ### 组件模块（通过requireJs管理维护）
 - [personal.map](./map.md)
 - [personal.lazyLoad](./lazyLoad.md)
-- [personal.validate](./validate.md)
+
 
 -----
 ## todo
