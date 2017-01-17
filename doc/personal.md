@@ -153,13 +153,13 @@ this.moduleUrl //personal.js 所在的文件夹路径
 - 功能：实现动态的加载引用文件，同时执行回调函数（协助requireJs管理样式文件）
 ```javascript
     this.loadJsCssFile({
-        fileName: this.moduleUrl + "component/feedback/error.css",
+        fileName: this.moduleUrl + "component/_module/_module.css",
         callback: function (data) {
             //加载完成之后直接挂载到personal下,下次使用再需要加载模块
-            _this.feedback=_feedback;
-            _this.feedback[funcName](params)
+            _this._module=_module;
+            _this._module[funcName](params)
             //会导致每次require、load模块
-            //_feedback[funcName].call(_this, params);
+            //_module[funcName].call(_this, params);
         }
     });
 ```
