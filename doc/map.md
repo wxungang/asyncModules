@@ -92,7 +92,7 @@ heading|0|
 speed|0|
 data.amap(key)|value|data.amap对象下字段
 citycode|021|城市区号
-adcode|310115|高德地区编码（比公司内部城市编码更丰富、细化）
+adcode|310115|高德地区编码
 neighborhoodType||
 neighborhood||
 building||
