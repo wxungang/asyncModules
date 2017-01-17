@@ -1,0 +1,75 @@
+//1rem==100px
+//basic style
+@button-bgColor: #6cc20e;
+@button-bgColor-active: #589116;
+
+@button-bgColor-coupon: #fd3259;
+@button-bgColor-coupon-active: #c42544;
+
+@button-bgColor-inactive: #bcbcbc;
+@button-color: #fff;
+//basic size
+@button-width: 90%; //670/750=89.333333333333
+@button-height: 0.8rem;
+@button-fSize: 0.36rem;
+@button-radius: 0.06rem;
+
+.button(@bgColor:@button-bgColor;@activeColor:@button-bgColor-active;@color:@button-color;) {
+  //basic style
+  display: block;
+  margin: 0.1rem auto;
+  text-align: center;
+  font-weight: bold;
+  //dynamic style
+  .button-style();
+
+  //size
+  .button-size();
+}
+
+//color
+.button-style(@bgColor:@button-bgColor;@activeColor:@button-bgColor-active;@color:@button-color;){
+  background-color: @bgColor;
+  color: @color;
+  //active or focus style
+  &.active, &:active {
+    background-color: @activeColor;
+  }
+  //inactive or focus style
+  &.inactive, &:disabled {
+    background-color: @button-bgColor-inactive;
+  }
+}
+
+//large
+@button-height-l: 0.9rem;
+@button-fSize-l: 0.38rem;
+@button-radius-l: 0.06rem;
+//small
+@button-height-s: 0.6rem;
+@button-fSize-s: 0.3rem;
+@button-radius-s: 0.06rem;
+//size function
+.button-size(@height:@button-height;@fSize:@button-fSize;@radius:@button-radius;) {
+  //basic style
+  width: @button-width;
+  height: @height;
+  line-height: @height;
+  font-size: @fSize;
+  border-radius: @radius;
+}
+
+//exports your modules
+.personal-button(){
+  .button();
+  &.button-l{
+    .button-size(@height:@button-height-l;@fSize:@button-fSize-l;@radius:@button-radius-l;)
+  }
+  &.button-s{
+    .button-size(@height:@button-height-s;@fSize:@button-fSize-s;@radius:@button-radius-s;)
+  }
+  //coupon
+  &.button-coupon{
+    .button-style(@bgColor:@button-bgColor-coupon;@activeColor:@button-bgColor-coupon-active;);
+  }
+}

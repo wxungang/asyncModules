@@ -1,0 +1,11 @@
+/**
+* 解决垂直方向的一些问题
+**/
+
+.vertical-center(@left:50%;@top:50%;) {
+  position: absolute;
+  top: @top;
+  left: @left;
+  transform: translate(-@left, -@top);
+  -webkit-transform: translate(-@left, -@top);
+}

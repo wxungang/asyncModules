@@ -1,0 +1,41 @@
+//1rem ==100px
+
+//basic style
+@header-color: #fff;
+@header-bgColor: #000;
+
+//basic size
+@header-height: 1rem;
+@header-fSize: 0.36rem;
+
+.header(@color:@header-color;@bgColor:@header-bgColor;) {
+  //basic
+  overflow: hidden;
+  text-align: center;
+  .back, .set, .text {
+    float: left;
+    //display: inline-block;
+    width: 15%;
+    height: 100%;
+  }
+  .text{
+    width: 70%;
+  }
+  //dynamic
+  color: @color;
+  background-color: @bgColor;
+  //
+  .header-size();
+}
+
+.header-size(@height:@header-height;@fSize:@header-fSize;) {
+  height: @height;
+  line-height: @height;
+  font-size: @fSize;
+}
+
+//exports your modules
+
+.personal-header() {
+  .header();
+}

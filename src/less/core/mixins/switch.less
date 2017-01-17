@@ -1,0 +1,129 @@
+/**
+ * Created by xiaogang on 2016/9/28.
+ * from weiXin
+ */
+
+@switch-color: #DFDFDF;
+@switch-bgColor: #fff;
+@switch-bgColor-checked: #04BE02;
+
+//size
+@switch-width: 1.2rem; //default 50px
+@switch-border-w: 0.024rem; // default 1px
+
+.switch(@color:@switch-color;@bgColor-checked:@switch-bgColor-checked;@bgColor:@switch-bgColor;) {
+  -webkit-appearance: none;
+  appearance: none;
+  outline: 0;
+  position: relative;
+
+  //move to size()
+  //width: 52px;
+  //height: 32px;
+  //border-radius: 16px;
+
+  //border: 1px solid #DFDFDF;
+  border: @switch-border-w solid @color;
+  box-sizing: border-box;
+  //background-color: #DFDFDF;
+  background-color: @color;
+  -webkit-transition: background-color 0.1s, border 0.1s;
+  transition: background-color 0.1s, border 0.1s;
+
+  &:before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    //move to size()
+    //width: 50px;
+    //height: 30px;
+    //border-radius: 15px;
+
+    //background-color: #FDFDFD;
+    background-color: @color;
+    -webkit-transition: -webkit-transform 0.35s cubic-bezier(0.45, 1, 0.4, 1);
+    transition: -webkit-transform 0.35s cubic-bezier(0.45, 1, 0.4, 1);
+    transition: transform 0.35s cubic-bezier(0.45, 1, 0.4, 1);
+    transition: transform 0.35s cubic-bezier(0.45, 1, 0.4, 1), -webkit-transform 0.35s cubic-bezier(0.45, 1, 0.4, 1);
+  }
+  &:after {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    //width: 30px;
+    //height: 30px;
+    //border-radius: 15px;
+
+    //background-color: #FFFFFF;
+    background-color: @bgColor;
+    //box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 @switch-border-w @switch-border-w*3 rgba(0, 0, 0, 0.4);
+    -webkit-transition: -webkit-transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
+    transition: -webkit-transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
+    transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
+    transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35), -webkit-transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
+  }
+
+  &:checked {
+    //border-color: #04BE02;
+    //background-color: #04BE02;
+    border-color: @bgColor-checked;
+    background-color: @bgColor-checked;
+    &:before {
+      -webkit-transform: scale(0);
+      transform: scale(0);
+    }
+    //&:after {
+    //  -webkit-transform: translateX(20px);
+    //  transform: translateX(20px);
+    //}
+  }
+
+  //size
+  .switch-size();
+}
+//large
+@switch-width-l: 1.5rem; //default 50px
+@switch-border-w-l: 0.03rem; // default 1px
+//small
+@switch-width-s: 1rem; //default 50px
+@switch-border-w-s: 0.021rem; // default 1px
+
+.switch-size(@width:@switch-width;@border-w:@switch-border-w;) {
+  //move to size()
+  width: @width + @border-w*2;
+  height: @width*0.6 + @border-w*2;
+  border-radius: @width*0.3 + @border-w;
+
+  &:before {
+    width: @width;
+    height: @width * 0.6;
+    border-radius: @width *0.3;
+  }
+  &:after {
+    width: @width *0.6;
+    height: @width *0.6;
+    border-radius: @width * 0.3;
+  }
+  &:checked {
+    &:after {
+      -webkit-transform: translateX(@width*0.4);
+      transform: translateX(@width*0.4);
+    }
+  }
+}
+
+//export your module
+.personal-switch() {
+  .switch();
+  &.switch-s {
+    .switch-size(@switch-width-s;@switch-border-w-s;);
+  }
+  &.switch-l {
+    .switch-size(@switch-width-l;@switch-border-w-l;);
+  }
+}

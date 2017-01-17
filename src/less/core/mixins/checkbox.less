@@ -1,0 +1,44 @@
+//换算1rem = 100px
+
+//basic style
+@checkbox-color: #333;
+
+//size
+@checkbox-height: 0.5rem;
+@checkbox-fSize: 0.3rem;
+
+.checkBox(@color:@checkbox-color;) {
+  //basic style
+  display: inline-block;
+
+  //dynamic
+  color: @color;
+  //size
+  .checkbox-size();
+}
+
+
+//large
+//size
+@checkbox-height-l: 0.6rem;
+@checkbox-fSize-l: 0.32rem;
+.checkbox-size(@height:@checkbox-height;@fSize:@checkbox-fSize;) {
+  line-height: @height;
+  height: @height;
+  font-size: @fSize;
+  //use input[type='checkbox'] instead of iconfont
+  input[type='checkbox']{
+    height: @height*0.8;
+    width: @height*0.8;
+    margin: @height*0.1;
+    float: left;
+  }
+}
+
+//exports your modules
+.personal-checkbox() {
+  .checkBox();
+  &.checkbox-l{
+    .checkbox-size(@checkbox-height-l;@checkbox-fSize-l;);
+  }
+}

@@ -1,0 +1,49 @@
+/**
+ * Created by xiaogang on 2016/11/23.
+ */
+@import "../mixins/vertical";
+@import "../mixins/ellipsis";
+
+@couponCard-img: '../../img/coupon/coupon.png';
+@couponCard-height: 2.08rem;
+.couponCard(@bg-img:@couponCard-img;@height:@couponCard-height;) {
+  //basic style
+  position: relative;
+  overflow: hidden;
+  background: url(@bg-img) no-repeat;
+  background-size: 100%;
+  height: @height;
+  line-height: 0.5rem;
+  font-size: 0.28rem;
+  color: #666;
+  .shopBankLogo {
+    //margin-left: 0.56rem;
+    .vertical-center(-50%;);
+    left: -0.2rem;
+  }
+  .couponLists {
+    .vertical-center(-50%;);
+    width: 4.6rem;
+    left: -0.5rem;
+    padding: 0.15rem 0;
+  }
+  //couponLists .listTitle
+  .listTitle {
+    position: relative;
+    font-size: 0.32rem;
+    color: #333;
+    margin-bottom: 0.15rem;
+    .iconfont {
+      .vertical-center(-50%;);
+      left: -0.16rem;
+    }
+    .name {
+      .personal-ellipsis(2);
+      margin-left: 0.5rem;
+    }
+  }
+}
+
+.personal-couponCard(@bg-img:@couponCard-img;) {
+  .couponCard(@bg-img:@bg-img;);
+}

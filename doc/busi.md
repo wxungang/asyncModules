@@ -6,6 +6,7 @@
 ####  功能描述
 - 主动定位 同时将位置信息存储起来（回调成功时默认）,异步执行
 - 失败时返回默认位置信息（失败情况下永远不会存储位置信息）。
+
 #### 入参 params(object)
 字段名称|是否必须|默认值|字段说明
 ---|---|---|---
@@ -17,6 +18,7 @@ callback|0|undefined|function(data,code,msg){}
 successStore|-1|true|默认成功回调储存定位信息（默认存储，即覆盖用户自选的位置信息）
 defaultStore|-1|false|调用失败时 是否存储默认位置信息
 locationByApp|-1|isRunApp|默认取决于运行环境[isAmap 为true时无效]
+
 #### 成功返回参数 data (object)
 ##### isAmap:false
 字段|返回值|字段说明
@@ -29,6 +31,7 @@ accuracy|30|
 altitudeAccuracy|null|
 heading|0|
 speed|0|
+
 ##### isAmap:true
 字段|返回值|字段说明
 ---|---|---
@@ -62,12 +65,14 @@ I|31.215644843333|高精度维度
 C|121.6533333333|高精度经度
 lng|121.6533|经度
 lat|31.21564|纬度
+
 #### 失败返回参数 data(object)
 ##### isAmap:false （data 为默认位置对象）
 字段|返回值|字段说明
 ---|---|---
 latitude|121|经度
 longitude|31|纬度
+
 ##### isAmap:true 同时 code==99时
 字段|返回值|字段说明
 ---|---|---
@@ -82,11 +87,13 @@ speed|0|
 data.amap(key)|value|data.amap对象下的字段值
 city|上海市|默认城市值
 province|上海市|默认省份值
+
 ##### isAmap:true 同时 code 为其他值
 字段|返回值|字段说明
 ---|---|---
 latitude|121|经度
 longitude|31|纬度
+
 #### 回调函数 code 值
 code值|相关联的常量（msg）|描述
 ---|---|---
@@ -96,6 +103,7 @@ code值|相关联的常量（msg）|描述
 3|TIMEOUT|获取地理位置超时，通过定义PositionOptions.timeout 来设置获取地理位置的超时时长。
 99|经纬度成功，但城市信息获取失败|经纬度获取成功，但没有拿到城市信息
 100|success|定位成功
+
 #### demo
 ```javascript
     //before
@@ -123,6 +131,7 @@ code值|相关联的常量（msg）|描述
 ### personal.busi.getLocation(params)
 ####  功能描述
 - 获取定位信息不存在时主动定位同时将位置信息存储起来,异步执行
+
 #### 入参 params(object)
 字段名称|是否必须|默认值|字段说明
 ---|---|---|---
@@ -135,12 +144,16 @@ successStore|-1|true|默认成功回调储存定位信息（默认存储，即�
 defaultStore|-1|false|调用失败时 是否存储默认位置信息
 locationByApp|-1|isRunApp|默认取决于运行环境[isAmap 为true时无效]
 callback|undefined|function(data,code,msg){}
+
 #### 成功返回参数 data (object)
 - 同personal.busi.setLocation(params)
+
 #### 失败返回参数 data(object)
 - 同personal.busi.setLocation(params)
+
 #### 回调函数 code 值
 - 同personal.busi.setLocation(params)
+
 #### demo
 ```javascript
     //获取定位信息，之后调用商圈数据

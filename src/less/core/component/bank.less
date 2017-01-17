@@ -1,0 +1,35 @@
+/**
+ * Created by xiaogang on 2016/11/23.
+ */
+@bankLogo-img: '../../img/bank/banks.png';
+@bankLogo-size: 1.2rem;
+@bankLogo-positonInit: -0.01rem;
+.bankLogo(@logo:@logo;@size:@bankLogo-size;@positonInit:@bankLogo-positonInit) {
+  display: inherit;
+  //float: left;
+  width: @size;
+  height: @size;
+  border-radius: 100%;
+  background: url(@logo) no-repeat;
+  background-position: 0 @positonInit;
+  background-size: 100%;
+  .set-bankLogo(51, 1, @size, @positonInit);
+}
+
+//.set-bankLogo(51);
+//list: 银联|工商银行|农业银行|中国银行|建设银行|交通银行|邮储银行|招商银行|光大银行|中信银行|华夏银行|浦发银行 |民生银行|平安银行|广发银行|兴业银行|北京银行 |上海银行 |花旗银行| 新疆乌鲁木齐市商业银行| 包商银行| 北京农村商业银行| 重庆银行| 大连市商业银行| 东莞银行| 东亚商业银行| 福建农信社| 福建省海峡银行| 富滇银行| 赣州银行| 广州农村商业银行| 广州银行| 哈尔滨银行| 汉口银行| 华融湘江银行| 徽商银行| 南洋商业银行| 宁波银行|青岛银行| 青海银行| 上海农商行| 上饶银行| 盛京银行|苏州银行| 天津银行| 温州银行| 无锡农村商业银行| 西安银行| 渣打银行| 浙商银行|宁夏银行
+@list: b00010000, b01020000, b01030000, b01040000, b01050000, b03010000, b01009999, b03080000, b03030000, b03020000, b03040000, b03100000, b03050000, b04100000, b03060000, b03090000, b04031000, b04010000, b03190000, b04278810, b04791920, b14181000, b64416530, b04202220, b04256020, b63200000, b14173900, b04053910, b04667310, b64634280, b65055810, b64135810, b04422610, b04145210, b65705500, b04403600, b63320000, b64083300, b64504520, b04588510, b65012900, b65264331, b04170000, b14303050, b04341100, b04123330, b14373020, b64447910, b25280344, b03160000, b04368710;
+.set-bankLogo(@n, @i: 1,@size:@bankLogo-size,@positonInit:@bankLogo-positonInit) when (@i =< @n) {
+  @name: extract(@list, @i);
+  &.bankNo-@{name} {
+    //width: (@i * 100% / @n);
+    background-position: 0 (@positonInit - (@i - 1) * @size);
+  }
+  .set-bankLogo(@n, (@i + 1),@size:@size,@positonInit:@positonInit);
+}
+
+//导出样式模块
+.personal-bankLogo(@logo:@bankLogo-img;@size:@bankLogo-size;@positonInit:@bankLogo-positonInit) {
+  .bankLogo(@logo:@logo;@size:@size;@positonInit:@positonInit);
+}
+

@@ -1,0 +1,65 @@
+// 后续 list 全局替换 成 list
+//换算 1rem == 100px
+@list-color: #333;
+@list-bgColor: #fff;
+@list-padding: 0.3rem;
+
+//size
+@list-height: 0.8rem;
+@list-fSize: 0.28rem;
+
+.list(@color:@list-color;@bgColor:@list-bgColor;@padding:@list-padding;) {
+  //basic style
+  //overflow:用来清除浮动 。 注掉 兼容性问题不大
+  overflow: hidden;
+  .key, .value {
+    display: inline-block;
+    //float: left;
+  }
+  .iconfont {
+    &.left {
+      margin-right: 0.15rem;
+    }
+  }
+  //dynamic style
+  padding: 0 @padding;
+  color: @color;
+  background-color: @bgColor;
+  //size
+  .list-size();
+}
+
+//large
+@list-height-l: 0.9rem;
+@list-fSize-l: 0.32rem;
+
+//small
+@list-height-s: 0.6rem;
+@list-fSize-s: 0.26rem;
+
+//smaller
+@list-height-sx: 0.5rem;
+@list-fSize-sx: 0.24rem;
+
+.list-size(@height:@list-height;@fSize:@list-fSize;) {
+  height:@height;
+  line-height: @height;
+  font-size: @fSize;
+}
+
+//exports your module
+
+.personal-list() {
+  .list();
+  &.list-l {
+    .list-size(@list-height-l; @list-fSize-l;)
+  }
+  &.list-s {
+    .list-size(@list-height-s; @list-fSize-s;)
+  }
+  &.list-sx {
+    .list-size(@list-height-sx; @list-fSize-sx;)
+  }
+}
+
+//flex 版

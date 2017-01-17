@@ -1,0 +1,48 @@
+@textarea-width: 100%;
+@textarea-padding: 0.2rem 3%; //40/750=0.053333
+@textarea-color: #999;
+@textarea-bgColor: #fff;
+
+//size
+@textarea-height: 3.6rem;
+@textarea-fSize: 0.28rem;
+@textarea-lineHeight: 0.38rem;
+
+.textarea(@fColor:@textarea-color;@bgColor:@textarea-bgColor;@padding:@textarea-padding;) {
+  //default style
+  font: inherit;
+  resize: none;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  word-break: break-all;
+  -webkit-appearance: none;
+
+  //dynamic style
+  color: @fColor;
+  background-color: @bgColor;
+  padding: @padding;
+
+  //size
+  .textarea-size();
+
+}
+
+//large
+@textarea-height-l: 3.6rem;
+@textarea-fSize-l: 0.3rem;
+@textarea-lineHeight-l: 0.4rem;
+.textarea-size(@lineHeight:@textarea-lineHeight;@fSize:@textarea-fSize;@height:@textarea-height;@width:@textarea-width;) {
+  line-height: @lineHeight;
+  font-size: @fSize;
+  height: @height;
+  width: @width;
+}
+
+//exports your module
+.personal-textarea() {
+  .textarea();
+  &.textarea-l {
+    .textarea-size(@textarea-lineHeight-l; @textarea-fSize-l; @textarea-height-l);
+  }
+}

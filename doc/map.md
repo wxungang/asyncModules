@@ -6,6 +6,7 @@
 ####     方法功能描述
 - 不依赖高德定位，获取用户当前位置的经纬度信息（无法获取地理名称、城市、街区等信息）
 - [webAPI](https://developer.mozilla.org/zh-CN/docs/Web/API/Geolocation)
+
 #### 入参 params(object)
 字段名称|是否必须|默认值|字段说明
 ---|---|---|---
@@ -13,6 +14,7 @@ enableHighAccuracy|-1(否)||false |地理位置的高度信息
 timeout|-1|5000|超时时间（单位ms）
 maximumAge|-1|0|定位的缓存时间
 callback|0(建议)|function(data,code,msg){}|回调函数
+
 #### 成功反参 data(object)
 字段|返回值|字段说明
 ---|---|---
@@ -24,8 +26,10 @@ accuracy|30|
 altitudeAccuracy|null|
 heading|0|
 speed|0|
+
 #### 失败返回参数 data(object)  
 - data 为空对象 {}
+
 #### 回调函数 code 值
 code值|相关联的常量（msg）|描述
 ---|---|---
@@ -34,6 +38,7 @@ code值|相关联的常量（msg）|描述
 2|POSITION_UNAVAILABLE|地理位置获取失败，因为至少有一个内部位置源返回一个内部错误。
 3|TIMEOUT|获取地理位置超时，通过定义PositionOptions.timeout 来设置获取地理位置的超时时长。
 100|success|定位成功
+
 #### demo
 ```javascript
     personal.map.location({
@@ -66,12 +71,14 @@ code值|相关联的常量（msg）|描述
 ### personal.map.getLocation(params)
 ####    方法功能描述
 - 利用经纬度信息，通过高德服务获取对应经纬度的城市、街区、路段等详细地理位置（不传入经纬度，则主动定位当前位置）
+
 #### 方法入参 params(object)
 字段名称|是否必须|默认值|字段说明
 ---|---|---|---
 longitude|-1|undefined| 经度（不提供则主动定位获取）
 latitude|-1|undefined| 纬度（不提供则主动定位获取）
 callback|0|function(data,code,msg){}|回调函数
+
 #### 成功函数返回参数 data(object)
 字段|返回值|字段说明
 ---|---|---
@@ -105,6 +112,7 @@ I|31.215644843333|高精度维度
 C|121.6533333333|高精度经度
 lng|121.6533|经度
 lat|31.21564|纬度
+
 #### 失败函数返回参数 data(object)
 ##### code==99时
 字段|返回值|字段说明
@@ -117,8 +125,10 @@ accuracy|30|
 altitudeAccuracy|null|
 heading|0|
 speed|0|
+
 ##### 其他情况：
  data 空对象 {}
+ 
 #### 回调函数 code 值
 code值|相关联的常量（msg）|描述
 ---|---|---
@@ -128,6 +138,7 @@ code值|相关联的常量（msg）|描述
 3|TIMEOUT|获取地理位置超时，通过定义PositionOptions.timeout 来设置获取地理位置的超时时长。
 99|经纬度成功，但城市信息获取失败|经纬度获取成功，但没有拿到城市信息
 100|success|定位成功
+
 #### demo
 ```javascript
     personal.map.getLocation({

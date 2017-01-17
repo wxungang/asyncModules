@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=EDGE">
+    <meta name="format-detection" content="telephone=no">
+    <title>personal.validate</title>
+    <link rel="stylesheet" type="text/css" href="../../less/iconfont/iconfont.css"/>
+    <!--项目共用样式-->
+    <link rel="stylesheet" type="text/css" href="../style/common.css"/>
+    <!--页面自实现样式-->
+    <link rel="stylesheet" type="text/css" href=""/>
+
+    <script type="text/javascript" src="../../personal/resize.js"></script>
+</head>
+<body>
+<div class="personal-page page-cup" id="page-cup">
+    <div class="personal-header">
+        <span class="back iconfont icon-angle-left" onclick="javascript:history.back();"></span>
+        <p class="text">personal.validate</p>
+        <span class="set"></span>
+    </div>
+
+    <input class="personal-input input-l" id="input" placeholder="input what you want!" style="margin: 0.2rem 0;">
+
+    <input class="personal-input input-l" id="phone" placeholder="input what you want!" >
+
+    <div class="personal-button" style="margin-top: 0.2rem;" id="initValidateById">
+        personal.validate.initValidateById(params)
+    </div>
+    <pre class="prettyprint" linenums>
+        //initValidateById
+        var _form = {
+            methods: {
+                "phone": {
+                    required: "required",
+                    mobile: "mobile"
+                }
+            },
+            errors: {
+                "phone": {
+                    required: "请输入您的手机号！",
+                    mobile: "请核对您的手机号！"
+                }
+            }
+        };
+        personal.validate.initValidateById(_form);
+
+        $("input").blur(function (e) {
+            var _this = this;
+            var _checkFlag = personal.validate.checkSingleNode({
+                node: _this,
+                callback: validateCallback
+            });
+        });
+
+        //callback
+        function validateCallback(data, code, msg) {
+            console.log(data);
+            (code !== 100) && alert(msg);
+        }
+    </pre>
+
+    <div class="personal-button" style="margin-top: 0.2rem;" id="initValidateByClass">
+        personal.validate.initValidateByClass(params)
+    </div>
+    <pre class="prettyprint" linenums>
+        //initValidateByClass
+        var _form = {
+            methods: {
+                "personal-input": {
+                    required: "required",
+                    mobile: "mobile"
+                }
+            },
+            errors: {
+                "personal-input": {
+                    required: "请输入您的手机号！",
+                    mobile: "请核对您的手机号！"
+                }
+            }
+        };
+        personal.validate.initValidateByClass(_form);
+
+        $("#validate-check").click(function (e) {
+            var _checkFlag = personal.validate.check({
+                callback: validateCallback
+            });
+            //校验未通过，则终止执行
+            if(_checkFlag){
+                return
+            }
+        });
+
+        //callback
+        function validateCallback(data, code, msg) {
+            console.log(data);
+            (code !== 100) && alert(msg);
+        }
+    </pre>
+
+    <div class="personal-button" style="margin-top: 0.2rem;" id="validate-check">
+        personal.validate.check(params)
+    </div>
+
+</div>
+<script src="../../personal/zepto.js" type="text/javascript"></script>
+<!-- build:cup -->
+<script type="text/javascript" src="../../personal/personal.js"></script>
+<script type="text/javascript" src="../../personal/util.js"></script>
+<!-- endbuild -->
+<script type="text/javascript" src="../js/validate.js"></script>
+<script src="../common/run_prettify.js?amp;skin=sunburst" type="text/javascript" async="async" defer="defer"></script>
+</body>
+</html>
